@@ -16,6 +16,18 @@ const toggleLocales = () => {
       <carbon-campsite />
     </router-link>
 
+    <router-link class="icon-btn mx-2" to="/features/otherPath" :title="t('button.home')">
+      <mdi:ab-testing />
+    </router-link>
+
+    <router-link class="icon-btn mx-2" to="/fruits/apple" :title="t('button.home')">
+      <ant-design:apple-outlined />
+    </router-link>
+
+    <!-- <router-link class="icon-btn mx-2" to="/fruits/apple" :title="t('button.home')">
+      <ant-design:underline-outlined />
+    </router-link> -->
+
     <button class="icon-btn mx-2 !outline-none" :title="t('button.toggle_dark')" @click="toggleDark()">
       <carbon-moon v-if="isDark" />
       <carbon-sun v-else />

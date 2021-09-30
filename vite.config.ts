@@ -30,7 +30,22 @@ export default defineConfig({
 
     // https://github.com/hannoeru/vite-plugin-pages
     Pages({
+      // 识别文件后缀
       extensions: ['vue', 'md'],
+      pagesDir: [
+        { dir: 'src/pages', baseRoute: '' },
+        // src/features/pages文件夹下会生成/features/filename这样的路由
+        { dir: 'src/features/pages', baseRoute: 'features' },
+        // 会识别fruits下多个分类下pages的文件
+        { dir: 'src/fruits/**/pages', baseRoute: 'fruits' },
+      ],
+      // TODO: 这里放截图演示效果
+      importMode: 'async',
+      // 只要包含fruits的路由，就会变为异步懒加载
+      // importMode(path) {
+      //   return path.includes('fruits') ? 'async' : 'sync'
+      // },
+      replaceSquareBrackets: true,
     }),
 
     // https://github.com/JohnCampionJr/vite-plugin-vue-layouts
