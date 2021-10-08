@@ -1,14 +1,17 @@
 button:
   about: About
+  asyncRoute: async route
   back: Back
   go: GO
   home: Home
+  nestedRoute: nested route
+  otherRoute: the route  not in pages
   toggle_dark: Toggle dark mode
   toggle_langs: Change languages
 intro:
+  aka: Also known as
   desc: Opinionated Vite Starter Template
   dynamic-route: Demo of dynamic route
   hi: Hi, {name}!
-  aka: Also known as
   whats-your-name: What's your name?
 not-found: Not found

@@ -16,12 +16,16 @@ const toggleLocales = () => {
       <carbon-campsite />
     </router-link>
 
-    <router-link class="icon-btn mx-2" to="/features/otherPath" :title="t('button.home')">
+    <router-link class="icon-btn mx-2" to="/features/otherPath" :title="t('button.otherRoute')">
       <mdi:ab-testing />
     </router-link>
 
-    <router-link class="icon-btn mx-2" to="/fruits/apple" :title="t('button.home')">
+    <router-link class="icon-btn mx-2" to="/fruits/apple" :title="t('button.asyncRoute')">
       <ant-design:apple-outlined />
+    </router-link>
+
+    <router-link class="icon-btn mx-2" to="/users" :title="t('button.nestedRoute')">
+      <ant-design:user-outlined />
     </router-link>
 
     <!-- <router-link class="icon-btn mx-2" to="/fruits/apple" :title="t('button.home')">

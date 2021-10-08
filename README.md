@@ -174,3 +174,16 @@ Go to [Netlify](https://app.netlify.com/start) and select your clone, `OK` along
 I have created several Vite apps recently. Setting the configs up is kinda the bottleneck for me to make the ideas simply come true within a very short time.
 
 So I made this starter template for myself to create apps more easily, along with some good practices that I have learned from making those apps. It's strongly opinionated, but feel free to tweak it or even maintains your own forks. [(see community maintained variation forks)](#variations)
+
+
+## 设置pnpm淘宝镜像源
+
+pnpm config set registry https://registry.npm.taobao.org/
+
+
+如果出现ssl认证问题,关闭认证严格模式
+
+```cmd
+self_signed_cert_in_chain
+npm config set strict-ssl false
+```

@@ -5,7 +5,7 @@
 <route>
 {
   meta: {
-    layout: 'default'
+    layout: 'home'
   }
 }
 </route>

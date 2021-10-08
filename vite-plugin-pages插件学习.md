@@ -1,6 +1,8 @@
 官方文档传送门： [vite-plugin-pages](https://github.com/hannoeru/vite-plugin-pages)
 
-简单记录一下各种路由的组织方式，安装方式各位看官老爷们直接在官方文档看就可以了。
+简单记录一下各种路由的组织方式，安装方式同学们直接在官方文档看就可以了。
+
+## 配置属性
 
 ### 指定需要生成路由的文件夹
 
@@ -95,7 +97,7 @@ meta:
 
 
 
-### 替换方括号（实验中）（我也还没测试成功。。。）
+### 替换方括号（实验中）（看官方issue好像是有问题的，我没有测试成功）
 
 类型： boolean
 
@@ -106,4 +108,71 @@ meta:
 ### nuxtStyle路由风格
 
 应该是比较人性化，方便nuxtjs迁移过来？
+
+
+
+### route处理方法
+
+类型： function
+
+写入之后，我们可以通过这个方法获取到单个路由对象，从而对这个对象进行一定的操作，比如设置身份校验，设置layout
+
+```typescript
+      extendRoute(route) {
+        // console.log(route.path)
+        // 这里为了测试这个方法的效果，就是判断一下路由中包含了fruit字符串的，更换layout
+        if (route.path.includes('fruit')) {
+          return {
+            ...route,
+            meta: { layout: 'home' },
+          }
+        }
+        return route
+      },
+```
+
+
+
+### routes处理方法
+
+类型： function
+
+写入之后，可以获取到完整的array<route>，通过循环遍历获取之后对route进行处理
+
+```typescript
+      // 整体处理整个routes的信息，然后进行相应的处理
+      onRoutesGenerated(routes) {
+        const temp_routes = JSON.parse(JSON.stringify(routes))
+        temp_routes.forEach((item: any) => {
+          // 这里依然是判断一下路由中包含了fruit字符串的，更换layout
+          if (item.path.includes('fruit')) {
+            item.meta = {
+              layout: 'home',
+            }
+          }
+        })
+        return temp_routes
+      },
+```
+
+
+
+### clientCode处理方法
+
+类型：function
+
+写入之后可以获取到整个插件渲染之后的代码，这里我们可以在这里通过字符串操作，对这个代码进行最后的拦截处理。
+
+```typescript
+      // 这里涉及到更改客户端代码
+      onClientGenerated(clientCode) {
+        // 能够完整获取到我们实际生成的路由的完整代码，string格式的，
+        // 感觉可以通过正则对这个方法进行替换，或者各种字符串骚操作进行替换
+        return clientCode
+      },
+```
+
+
+
+## 常见使用场景
 
